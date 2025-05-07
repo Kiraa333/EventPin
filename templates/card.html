@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карточка события</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='card.css') }}">
+</head>
+<body>
+    <div class="event-card">
+        <div class="event-image">
+            <img src="/static/play.jpg" alt="Фото события">
+        </div>
+        <div class="event-content">
+            <h3 class="event-title">Концерт классической музыки</h3>
+            <p class="event-date">15 июня 2023, 19:00</p>
+            <p class="event-location">Московская консерватория</p>
+            <p class="event-description">Вечер классической музыки с участием ведущих музыкантов страны. В программе произведения Чайковского, Рахманинова и Шостаковича.</p>
+            <button class="visit-button">Посетить событие</button>
+        </div>
+    </div>
+</body>
+</html>

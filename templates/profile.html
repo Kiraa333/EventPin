@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventPin - Личный кабинет</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+</head>
+<body>
+    <header class="profile-header">
+        <div class="container">
+            <a href="{{ url_for('home') }}" class="logo">EventPin</a>
+            <nav>
+                <a href="{{ url_for('show_events') }}"><i class="fas fa-calendar-alt"></i> Мероприятия</a>
+                <a href="/logout" class="logout"><i class="fas fa-sign-out-alt"></i> Выход</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="profile-container">
+        <div class="sidebar">
+            <div class="user-card">
+                <div class="avatar">
+                    <img src="{{ user.avatar }}" alt="Аватар" id="avatar-img">
+                    <button class="edit-avatar"><i class="fas fa-camera"></i></button>
+                </div>
+                <h2 id="username">{{ user.username }}</h2>
+                <p id="user-email">{{ user.email }}</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">{{ user.events_count }}</span>
+                        <span class="stat-label">Мероприятий</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">{{ user.friends_count }}</span>
+                        <span class="stat-label">Друзей</span>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="profile-menu">
+                <a href="#" class="active"><i class="fas fa-user"></i> Профиль</a>
+                <a href="{{ url_for('my_events') }}"><i class="fas fa-ticket-alt"></i> Мои билеты</a>
+                <a href="#"><i class="fas fa-heart"></i> Избранное</a>
+            </nav>
+        </div>
+
+        <div class="main-content">
+            <section class="profile-section">
+                <h2><i class="fas fa-user-edit"></i> Основная информация</h2>
+                <form class="profile-form">
+                    <div class="form-group">
+                        <label for="fullname">ФИО</label>
+                        <input type="text" id="fullname" value="{{ user.username }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" value="{{ user.phone }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="birthdate">Дата рождения</label>
+                        <input type="date" id="birthdate" value="{{ user.birthdate }}">
+                    </div>
+                    <button type="submit" class="save-btn">Сохранить изменения</button>
+                </form>
+            </section>
+
+            <section class="profile-section">
+                <h2><i class="fas fa-lock"></i> Безопасность</h2>
+                <form class="security-form">
+                    <div class="form-group">
+                        <label for="current-password">Текущий пароль</label>
+                        <input type="password" id="current-password">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">Новый пароль</label>
+                        <input type="password" id="new-password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Подтвердите пароль</label>
+                        <input type="password" id="confirm-password">
+                    </div>
+                    <button type="submit" class="save-btn">Изменить пароль</button>
+                </form>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

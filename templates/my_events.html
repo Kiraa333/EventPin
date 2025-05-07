@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventPin - Мои события</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+</head>
+<body>
+    <header class="profile-header">
+        <div class="container">
+            <a href="{{ url_for('home') }}" class="logo">EventPin</a>
+            <nav>
+                <a href="{{ url_for('show_events') }}"><i class="fas fa-calendar-alt"></i> Мероприятия</a>
+                <a href="/logout" class="logout"><i class="fas fa-sign-out-alt"></i> Выход</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="profile-container">
+        <div class="sidebar">
+            <div class="user-card">
+                <div class="avatar">
+                    <img src="{{ user.avatar }}" alt="Аватар" id="avatar-img">
+                    <button class="edit-avatar"><i class="fas fa-camera"></i></button>
+                </div>
+                <h2 id="username">{{ user.username }}</h2>
+                <p id="user-email">{{ user.email }}</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">{{ user.events_count }}</span>
+                        <span class="stat-label">Мероприятий</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">{{ user.friends_count }}</span>
+                        <span class="stat-label">Друзей</span>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="profile-menu">
+                <a href="{{  url_for('profile')  }}"><i class="fas fa-user"></i> Профиль</a>
+                <a href="{{ url_for('my_events') }}" class="active"><i class="fas fa-ticket-alt"></i> Мои билеты</a>
+                <a href="#"><i class="fas fa-heart"></i> Избранное</a>
+            </nav>
+        </div>
+
+        <div class="main-content">
+            <h2 class="mb-4"><i class="fas fa-ticket-alt"></i> Мои события</h2>
+
+            <div class="row">
+                <!-- Карточка события 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card event-card h-100">
+                        <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                             class="card-img-top event-img" alt="Концерт">
+                        <div class="card-body">
+                            <div class="event-date mb-2">15 июня 2023 • 19:00</div>
+                            <h5 class="card-title">Концерт рок-группы "Ветер перемен"</h5>
+                            <p class="text-muted mb-3">
+                                <i class="fas fa-map-marker-alt"></i> Клуб "Гравитация", Москва
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="event-price">1 500 ₽</div>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="fas fa-ticket-alt"></i> Билет
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка события 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card event-card h-100">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                             class="card-img-top event-img" alt="Фестиваль">
+                        <div class="card-body">
+                            <div class="event-date mb-2">22 июля 2023 • 12:00</div>
+                            <h5 class="card-title">Фестиваль еды "Вкус лета"</h5>
+                            <p class="text-muted mb-3">
+                                <i class="fas fa-map-marker-alt"></i> Парк Горького, Москва
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="event-price">800 ₽</div>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="fas fa-ticket-alt"></i> Билет
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка события 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card event-card h-100">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                             class="card-img-top event-img" alt="Выставка">
+                        <div class="card-body">
+                            <div class="event-date mb-2">5 августа 2023 • 10:00</div>
+                            <h5 class="card-title">Выставка современного искусства</h5>
+                            <p class="text-muted mb-3">
+                                <i class="fas fa-map-marker-alt"></i> Галерея "Арт-пространство", Москва
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="event-price">Бесплатно</div>
+                                <button class="btn btn-sm btn-outline-success">
+                                    <i class="fas fa-check"></i> Зарегистрирован
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
