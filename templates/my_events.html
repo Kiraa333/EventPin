@@ -7,6 +7,81 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+    <style>
+        .event-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.event-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.event-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.event-title {
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+}
+
+.event-date, .event-location {
+    margin: 0 0 8px 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.event-description {
+    margin: 15px 0 20px 0;
+    color: #444;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+/* Стили кнопки */
+.visit-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: center;
+    width: auto;
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.visit-button:hover {
+    background-color: #45a049;
+}
+
+
+        .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 0; /* Убираем padding чтобы выровнять с фильтрами */
+}
+    </style>
+
 </head>
 <body>
     <header class="profile-header">
@@ -50,71 +125,25 @@
         <div class="main-content">
             <h2 class="mb-4"><i class="fas fa-ticket-alt"></i> Мои события</h2>
 
-            <div class="row">
+            <div class="events-grid">
                 <!-- Карточка события 1 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card event-card h-100">
-                        <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-                             class="card-img-top event-img" alt="Концерт">
-                        <div class="card-body">
-                            <div class="event-date mb-2">15 июня 2023 • 19:00</div>
-                            <h5 class="card-title">Концерт рок-группы "Ветер перемен"</h5>
-                            <p class="text-muted mb-3">
-                                <i class="fas fa-map-marker-alt"></i> Клуб "Гравитация", Москва
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="event-price">1 500 ₽</div>
-                                <button class="btn btn-sm btn-outline-danger">
-                                    <i class="fas fa-ticket-alt"></i> Билет
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Карточка события 2 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card event-card h-100">
-                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-                             class="card-img-top event-img" alt="Фестиваль">
-                        <div class="card-body">
-                            <div class="event-date mb-2">22 июля 2023 • 12:00</div>
-                            <h5 class="card-title">Фестиваль еды "Вкус лета"</h5>
-                            <p class="text-muted mb-3">
-                                <i class="fas fa-map-marker-alt"></i> Парк Горького, Москва
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="event-price">800 ₽</div>
-                                <button class="btn btn-sm btn-outline-danger">
-                                    <i class="fas fa-ticket-alt"></i> Билет
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Карточка события 3 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card event-card h-100">
-                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-                             class="card-img-top event-img" alt="Выставка">
-                        <div class="card-body">
-                            <div class="event-date mb-2">5 августа 2023 • 10:00</div>
-                            <h5 class="card-title">Выставка современного искусства</h5>
-                            <p class="text-muted mb-3">
-                                <i class="fas fa-map-marker-alt"></i> Галерея "Арт-пространство", Москва
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="event-price">Бесплатно</div>
-                                <button class="btn btn-sm btn-outline-success">
-                                    <i class="fas fa-check"></i> Зарегистрирован
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                {% for event in my_events %}
+    <div class="event-card">
+        <div class="event-image">
+            <img src="{{ event.image_url }}" alt="{{ event.title }}">
         </div>
+        <div class="event-content">
+            <h3 class="event-title">{{ event.title }}</h3>
+            <p class="event-date">{{ event.date }}</p>
+            <p class="event-location">{{ event.location }}</p>
+            <p class="event-description">{{ event.description }}</p>
+            <a href="{{ url_for('card') }}" class="visit-button">Подробнее</a>
+        </div>
+    </div>
+    {% endfor %}
+                </div>
+
+            </div>
     </main>
 </body>
 </html>

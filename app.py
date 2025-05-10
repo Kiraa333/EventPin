@@ -72,7 +72,7 @@ def profile():
 
 @app.route('/my_events')
 def my_events():
-    return render_template('my_events.html', user=user_data)
+    return render_template('my_events.html', user=user_data, my_events=events)
 
 
 if __name__ == '__main__':
