@@ -70,9 +70,15 @@ def card():
 def profile():
     return render_template('profile.html', user=user_data)
 
+
 @app.route('/my_events')
 def my_events():
     return render_template('my_events.html', user=user_data, my_events=events)
+
+
+@app.route('/add_event')
+def add_event():
+    return render_template('add_event.html', user=user_data)
 
 
 if __name__ == '__main__':

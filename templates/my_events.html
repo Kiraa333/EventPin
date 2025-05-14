@@ -118,7 +118,7 @@
             <nav class="profile-menu">
                 <a href="{{  url_for('profile')  }}"><i class="fas fa-user"></i> Профиль</a>
                 <a href="{{ url_for('my_events') }}" class="active"><i class="fas fa-ticket-alt"></i> Мои билеты</a>
-                <a href="#"><i class="fas fa-heart"></i> Избранное</a>
+                <a href="{{ url_for('add_event') }}"><i class="fa-solid fa-plus"></i> Добавить событие</a>
             </nav>
         </div>
 
