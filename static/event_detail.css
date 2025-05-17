@@ -1,0 +1,120 @@
+/* Custom styles to enhance Bootstrap */
+body {
+    background-color: #f7f6f0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Header styles */
+header {
+    z-index: 1030;
+}
+
+/* Map container */
+#event-map {
+    width: 100%;
+    border: 1px solid #dee2e6;
+}
+
+/* Шапка */
+.profile-header {
+    background: #f7f6f0;
+    box-shadow: #ed98a9;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 30 10px;
+}
+
+.profile-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f2afbc;
+    text-decoration: none;
+}
+
+.profile-header nav a {
+    margin-left: 20px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.profile-header nav a:hover {
+    color: #f2afbc;
+}
+
+.profile-header nav a i {
+    margin-right: 5px;
+}
+
+.logout {
+    color: var(--accent-color) !important;
+}
+
+/* Основной контент */
+.profile-container {
+    display: flex;
+    padding: 30px 0;
+    gap: 30px;
+}
+
+.sidebar {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+/* Card shadows */
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+.btn {
+    background-color:#f2afbc;
+    border: 1px solid #eb869a;
+}
+
+
+.badge.bg-primary {
+    background-color:#f2afbc !important;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Убираем стандартные отступы у карточки */
+.card.bg-transparent {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .display-5 {
+        font-size: 2rem;
+    }
+
+    .btn-lg {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+}
