@@ -10,7 +10,7 @@ body {
     background: linear-gradient(135deg, #6e8efb, #a777e3);
     height: 100vh;
     color: white;
-    background-image: url('background_main.jpg');
+    background-image: url('background_main_2.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -84,7 +84,7 @@ p.subtitle {
 /* Кнопка */
 .btn {
     display: inline-block;
-    background: #ff6b6b;
+    background: #f9cbdf;
     color: white;
     padding: 15px 30px;
     border-radius: 50px;
@@ -98,7 +98,7 @@ p.subtitle {
 }
 
 .btn:hover {
-    background: #ff5252;
+    background: #f2afbc;
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }

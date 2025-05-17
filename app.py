@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
 
@@ -80,6 +80,21 @@ def my_events():
 def add_event():
     return render_template('add_event.html', user=user_data)
 
+@app.route('/event')
+def event_detail():
+    # Пример данных события (замените на запрос к вашей БД)
+    event = {
+        'title': 'Концерт классической музыки',
+        'category': 'Концерт',
+        'date': '15 июня 2023',
+        'time': '19:00',
+        'description': 'Вечер классической музыки с участием ведущих музыкантов страны. В программе произведения Чайковского, Рахманинова и Шостаковича.',
+        'venue': 'Московская консерватория',
+        'address': 'ул. Большая Никитская, 13/6, Москва',
+        'image_url': url_for('static', filename='play.jpg'),
+        'coordinates': [55.7558, 37.6173]  # Широта и долгота
+    }
+    return render_template('event_detail.html', event=event)
 
 if __name__ == '__main__':
     app.run(debug=True)
