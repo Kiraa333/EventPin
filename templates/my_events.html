@@ -6,6 +6,9 @@
     <title>EventPin - Мои события</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
     <style>
         .event-card {
@@ -88,8 +91,8 @@
         <div class="container">
             <a href="{{ url_for('home') }}" class="logo">EventPin</a>
             <nav>
-                <a href="{{ url_for('show_events') }}"><i class="fas fa-calendar-alt"></i> Мероприятия</a>
-                <a href="/logout" class="logout"><i class="fas fa-sign-out-alt"></i> Выход</a>
+                <a href="{{ url_for('show_events') }}"><i class="bi bi-calendar-fill"></i> Мероприятия</a>
+                <a href="/logout" class="logout"><i class="bi bi-box-arrow-right fa-lg"></i> Выход</a>
             </nav>
         </div>
     </header>
@@ -116,14 +119,14 @@
             </div>
 
             <nav class="profile-menu">
-                <a href="{{  url_for('profile')  }}"><i class="fas fa-user"></i> Профиль</a>
-                <a href="{{ url_for('my_events') }}" class="active"><i class="fas fa-ticket-alt"></i> Мои билеты</a>
-                <a href="{{ url_for('add_event') }}"><i class="fa-solid fa-plus"></i> Добавить событие</a>
+                <a href="{{  url_for('profile')  }}"><i class="bi bi-person-fill fa-lg"></i> Профиль</a>
+                <a href="{{ url_for('my_events') }}" class="active"><i class="bi bi-ticket-fill fa-lg"></i> Мои билеты</a>
+                <a href="{{ url_for('add_event') }}"><i class="bi bi-plus-circle-fill fa-lg"></i> Добавить событие</a>
             </nav>
         </div>
 
         <div class="main-content">
-            <h2 class="mb-4"><i class="fas fa-ticket-alt"></i> Мои события</h2>
+            <h2 class="mb-4"><i class="bi bi-ticket-fill fa-lg"></i> Мои события</h2>
 
             <div class="events-grid">
                 <!-- Карточка события 1 -->
