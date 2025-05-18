@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventPin - Найди любое событие</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='try.css') }}">
+</head>
+<body>
+    <!-- Шапка с кнопками -->
+    <div class="header">
+        <a href="{{ url_for('auth') }}" class="header-btn">Регистрация/Авторизация</a>
+        <a href="{{ url_for('profile') }}" class="header-btn">Личный кабинет</a>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="content">
+        <h1>EventPin</h1>
+        <p class="subtitle">Найди для себя любое событие</p>
+        <a href="{{ url_for('events') }}" class="btn">Начать поиск</a>
+    </div>
+</body>
+</html>
