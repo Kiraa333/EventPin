@@ -4,7 +4,7 @@ from telegram.ext import Application, MessageHandler, filters
 from telegram.ext import CommandHandler
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
 
-BOT_TOKEN = '7553402605:AAGYN_CkY9E3RClEgKNnUECj8wqvQNB69ck'
+BOT_TOKEN = ''
 
 # Запускаем логгирование
 logging.basicConfig(
