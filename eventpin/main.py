@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from orm import User, Event, db
+from orm import User, Event, db, VisitedEvent
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 import requests
@@ -110,11 +110,40 @@ def events():
 @app.route('/my_events')
 def my_events():
     user_data = User.query.get(session['user_id'])
-    event = Event.query.filter_by(user_id=session['user_id']).all()
+    event =  VisitedEvent.query\
+        .filter_by(user_id=session['user_id'])\
+        .options(db.joinedload(VisitedEvent.event))\
+        .all()
     print(event)
     print(session['user_id'])
     return render_template('my_events.html', user=user_data, my_events=event)
 
+
+@app.route('/mark_visited/<int:event_id>', methods=['POST'])
+def mark_visited(event_id):
+    event = Event.query.get_or_404(event_id)
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    # Проверяем, не добавлено ли уже это событие
+    existing = VisitedEvent.query.filter_by(
+        user_id=session['user_id'],
+        event_id=event_id
+    ).first()
+
+    if existing:
+        flash('Это событие уже в вашем списке посещенных', 'info')
+    else:
+        # Создаем новую запись о посещении
+        visited_event = VisitedEvent(
+            user_id=session['user_id'],
+            event_id=event_id
+        )
+
+        db.session.add(visited_event)
+        db.session.commit()
+        flash('Событие добавлено в ваш список посещенных', 'success')
+    return render_template('card.html', event=event)
 
 @app.route('/create_event')
 def create_event():
