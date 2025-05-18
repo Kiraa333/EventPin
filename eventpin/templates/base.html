@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Мероприятия{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f2afbc;
+    text-decoration: none;
+}
+
+.logo-text:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+    </style>
+</head>
+<body>
+    <!-- Шапка с кнопками -->
+    <div class="header">
+        <a href="{{ url_for('home') }}" class="logo-text">EventPin</a>
+        <a href="{{ url_for('profile') }}" class="header-btn">Личный кабинет</a>
+    </div>
+
+    <div class="container">
+        <!-- Боковая панель фильтров -->
+        <aside class="filters-sidebar">
+            <h2 class="filters-title">Фильтры</h2>
+
+            <div class="filter-group">
+                <h3>Дата проведения</h3>
+                <div class="filter-option">
+                    <input type="radio" id="all-dates" name="date-filter" value="all" checked>
+                    <label for="all-dates">Все даты</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="today" name="date-filter" value="today">
+                    <label for="today">Сегодня</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="tomorrow" name="date-filter" value="tomorrow">
+                    <label for="tomorrow">Завтра</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="week" name="date-filter" value="week">
+                    <label for="week">На этой неделе</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="month" name="date-filter" value="month">
+                    <label for="month">В этом месяце</label>
+                </div>
+            </div>
+
+            <button class="apply-filters">Применить фильтры</button>
+        </aside>
+
+        <!-- Основное содержимое -->
+        <main class="main-content">
+            <h1 class="page-title">Предстоящие события</h1>
+            <div class="events-grid">
+            {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>

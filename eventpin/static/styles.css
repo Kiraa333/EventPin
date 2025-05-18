@@ -1,0 +1,214 @@
+/* Общие стили */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f7f6f0;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Шапка с кнопками */
+.header {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    left:0;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    display: flex;
+    gap: 15px;
+    padding: 0 100px;
+}
+
+.header-btn {
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-btn:hover {
+    background: rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.container {
+    display: flex;
+    max-width: 1300px;
+    margin: 80px auto 0;
+    gap: 30px;
+    padding: 20px;
+    align-items: flex-start; /* Выравниваем по верхнему краю */
+}
+
+.page-title {
+    position: relative;
+    left: 160px;
+    bottom: 40px;
+    margin-bottom: 30px;
+}
+
+/* Боковая панель фильтров */
+.filters-sidebar {
+    position: sticky;
+    top: 20px; /* Отступ сверху при прокрутке */
+    width: 250px;
+    background: #fafafa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    margin-top: 90px; /* Убираем отступ сверху */
+    margin-left: 0px;
+}
+
+.filters-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.filter-group {
+    margin-bottom: 25px;
+}
+
+.filter-group h3 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.filter-option {
+    margin-bottom: 10px;
+}
+
+.filter-option label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.filter-option input {
+    margin-right: 10px;
+}
+
+.apply-filters {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #f2afbc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.apply-filters:hover {
+    background-color: #ed98a9;
+}
+
+/* Основное содержимое */
+.main-content {
+    flex: 1;
+}
+
+/* Сетка событий */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 0; /* Убираем padding чтобы выровнять с фильтрами */
+}
+
+/* Стили карточки */
+.event-card {
+    background: #fafafa;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.event-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.event-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.event-title {
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+}
+
+.event-date, .event-location {
+    margin: 0 0 8px 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.event-description {
+    margin: 15px 0 20px 0;
+    color: #444;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+/* Стили кнопки */
+.visit-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f2afbc;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: center;
+    width: auto;
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.visit-button:hover {
+    background-color: #ed98a9;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .filters-sidebar {
+        position: static;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .events-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
