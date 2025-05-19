@@ -50,7 +50,7 @@ async def close_keyboard(update, context):
 
 async def site(update, context):
     await update.message.reply_text(
-        "Сайт: our_url")
+        "Сайт: https://95.83.150.10/")
 
 
 async def info(update, context):
